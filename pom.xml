@@ -1,11 +1,6 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <parent>
-        <groupId>net.techcable</groupId>
-        <artifactId>parent</artifactId>
-        <version>1.0.4</version>
-    </parent>
     <groupId>net.techcable</groupId>
     <artifactId>techutils</artifactId>
     <version>1.1.3-SNAPSHOT</version>
@@ -20,7 +15,7 @@
         <dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot-api</artifactId>
-            <version>1.8-R0.1-SNAPSHOT</version>
+            <version>1.8.8-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -29,11 +24,18 @@
             <version>4.12</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.8</version>
+            <scope>provided</scope>
+        </dependency>
         <!-- Does our config stuff -->
         <dependency>
-            <groupId>com.torchmind.candle</groupId>
-            <artifactId>core</artifactId>
+            <groupId>com.github.GhastD</groupId>
+            <artifactId>Candle</artifactId>
             <version>1.0-SNAPSHOT</version>
+            <scope>compile</scope>
             <exclusions>
                 <!-- FindBugs is not a runtime dependency -->
                 <exclusion>
@@ -47,6 +49,15 @@
     <build>
         <finalName>TechUtils</finalName>
         <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.7.0</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                </configuration>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
@@ -70,27 +81,17 @@
                     </relocations>
                 </configuration>
             </plugin>
-            <plugin>
-                <groupId>com.mycila</groupId>
-                <artifactId>license-maven-plugin</artifactId>
-                <version>2.8</version>
-                <configuration>
-                    <excludes>
-                        <exclude>**/Metrics*.java</exclude>
-                    </excludes>
-                </configuration>
-            </plugin>
         </plugins>
     </build>
 
     <repositories>
         <repository>
-            <id>techcable-repo</id>
-            <url>http://repo.techcable.net/content/groups/public/</url>
-        </repository>
-        <repository>
             <id>torchmind-snapshot</id>
             <url>http://maven.torchmind.com/snapshot/</url>
+        </repository>
+        <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
         </repository>
     </repositories>
 </project>

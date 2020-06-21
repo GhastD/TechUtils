@@ -118,7 +118,7 @@ public class WrappedDataWatcher {
         return new WrappedWatchableObject(handle).getValue();
     }
 
-    private void setObject(int i, Object value) {
+    public void setObject(int i, Object value) {
         Map valueMap = getField(this.valueMap, getHandle());
         WrappedWatchableObject watcher = new WrappedWatchableObject(i, value);
         valueMap.put(i, watcher.getHandle());
