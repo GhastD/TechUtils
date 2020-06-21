@@ -86,8 +86,8 @@
 
     <repositories>
         <repository>
-            <id>torchmind-snapshot</id>
-            <url>http://maven.torchmind.com/snapshot/</url>
+            <id>spigot-repo</id>
+            <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
         </repository>
         <repository>
             <id>jitpack.io</id>
